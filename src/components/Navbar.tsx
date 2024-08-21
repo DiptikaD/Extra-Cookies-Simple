@@ -6,10 +6,34 @@ const AppNavbar: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Pseudo-code for login functionality
-    console.log(`Username: ${username}, Password: ${password}`);
-    setOpen(false);
+  const handleLogin = async () => {
+    try{
+      const response = await fetch('http://localhost:8080/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if(!response.ok){
+        throw new Error('Network response was not ok :(');
+      }
+
+      const data = await response.json();
+      console.log('Login successful:', data);
+
+      // if login successful, you store the token and redirect the user
+
+      setOpen(false);
+      ////////
+    } catch (error){
+      console.error('There was a problem with the fetch operation :(', error);
+      //handles error and displays to user
+    }
   };
 
   return (
@@ -24,6 +48,7 @@ const AppNavbar: React.FC = () => {
           </Button>
         </Toolbar>
       </AppBar>
+      
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>User Login</DialogTitle>
