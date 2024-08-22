@@ -5,10 +5,12 @@ const AppNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [currentUser, setCurrentUser] = useState<string | null>(null); // State to hold the current user's name
+
 
   const handleLogin = async () => {
     try{
-      const response = await fetch('http://localhost:8080/login', {
+      const response = await fetch('http://localhost:8080/api/authenticate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,6 +27,8 @@ const AppNavbar: React.FC = () => {
 
       const data = await response.json();
       console.log('Login successful:', data);
+      setCurrentUser(username);
+      console.log('Current User:', currentUser);
 
       // if login successful, you store the token and redirect the user
 
@@ -43,9 +47,15 @@ const AppNavbar: React.FC = () => {
           <Typography variant="h2" sx={{ flexGrow: 1 }}>
             Extra Cookies
           </Typography>
-          <Button color="inherit" onClick={() => setOpen(true)}>
-            User
-          </Button>
+          {currentUser ? (
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+              Welcome, {currentUser}!
+            </Typography>
+          ) : (
+            <Button color="inherit" onClick={() => setOpen(true)}>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
       
