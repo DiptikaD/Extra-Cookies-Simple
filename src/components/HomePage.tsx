@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { Grid, Button, Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import CreatePostModal from './CreatePostModal';
-
-interface Post {
-  name: string;
-  location: string;
-  price: number;
-  image: string;
-}
+import { Container } from 'react-bootstrap';
+import { Post } from './types';
 
 const HomePage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -19,8 +14,8 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <Typography variant="h4" component="h1" align='center'>
-        Food Posts
+      <Typography variant="h5" component="h1" align='center' padding={2.5}>
+        Posts in the Neighbourhood
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
         <Button variant="contained" color="primary" onClick={() => setShowModal(true)}>
@@ -43,10 +38,16 @@ const HomePage: React.FC = () => {
                 <Typography variant="h5" component="div">
                   {post.name}
                 </Typography>
+                <Container>
                 <Typography variant="body2" color="textSecondary">
                   Location: {post.location} <br />
                   Price: ${post.price}
                 </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  Availability: {post.availability.toLocaleString()} <br /> 
+                  Category: {post.category}
+                </Typography>
+                </Container>
               </CardContent>
             </Card>
           </Grid>

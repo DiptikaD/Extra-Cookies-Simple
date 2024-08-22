@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from '@mui/material';
+import SearchAppBar from './SearchBar';
+
 
 const AppNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -44,9 +46,10 @@ const AppNavbar: React.FC = () => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h2" sx={{ flexGrow: 1 }}>
+          <Typography variant="h3" sx={{ flexGrow: 1 }}>
             Extra Cookies
           </Typography>
+          <SearchAppBar/>
           {currentUser ? (
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               Welcome, {currentUser}!

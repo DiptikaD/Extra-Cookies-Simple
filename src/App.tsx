@@ -2,7 +2,6 @@ import React from 'react';
 import { ThemeProvider, createTheme, CssBaseline, Container } from '@mui/material';
 import AppNavbar from './components/Navbar';
 import HomePage from './components/HomePage';
-import SearchAppBar from './components/SearchBar';
 
 const theme = createTheme({
   palette: {
@@ -27,10 +26,12 @@ const theme = createTheme({
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
+
       <CssBaseline />
       <AppNavbar />
+  
+
       <Container maxWidth="lg">
-      <SearchAppBar/>
         <HomePage />
       </Container>
     </ThemeProvider>
