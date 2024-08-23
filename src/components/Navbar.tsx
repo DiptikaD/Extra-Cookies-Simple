@@ -7,7 +7,7 @@ const AppNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [currentUser, setCurrentUser] = useState<string | null>(null); // State to hold the current user's name
+  const [currentUser, setCurrentUser] = useState<string | null>(null); // holding current user's name
 
 
   const handleLogin = async () => {
@@ -28,6 +28,7 @@ const AppNavbar: React.FC = () => {
       }
 
       const data = await response.json();
+      localStorage.setItem('authToken', data.token); //jwt token stored!!
       console.log('Login successful:', data);
       setCurrentUser(username);
       console.log('Current User:', currentUser);

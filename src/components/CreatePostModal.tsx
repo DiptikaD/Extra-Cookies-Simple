@@ -20,12 +20,12 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide, addPost
 
   const handleSubmit = () => {
     const newPost: Post = {
+      price: Number(price),
       name,
       location,
-      price: Number(price),
-      image,
       availability: availabilityDateTime ?? new Date(), 
       category,
+      image,
     };
     addPost(newPost);
     onHide();

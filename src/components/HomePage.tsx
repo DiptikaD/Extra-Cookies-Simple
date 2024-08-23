@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Grid, Button, Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import CreatePostModal from './CreatePostModal';
+import PostsDisplay from './PostsDisplay';
 import { Container } from 'react-bootstrap';
 import { Post } from './types';
 
 const HomePage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const addPost = (newPost: Post) => {
-    setPosts([...posts, newPost]);
+    console.log('New post submitted: ', newPost);
   };
 
   return (
@@ -26,7 +27,14 @@ const HomePage: React.FC = () => {
       <Grid container spacing={4} style={{ marginTop: '16px' }}>
         {posts.map((post, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
+            <PostsDisplay/>
+            <CreatePostModal
+              show= {showModal}
+              onHide = {() => setShowModal(false)}
+              addPost = {addPost}
+            />
+            <button onClick={() => setShowModal(true)}>Create Post</button>
+            {/* <Card>
               <CardMedia
                 component="img"
                 alt={post.name}
@@ -49,11 +57,11 @@ const HomePage: React.FC = () => {
                 </Typography>
                 </Container>
               </CardContent>
-            </Card>
+            </Card> */}
           </Grid>
         ))}
       </Grid>
-
+        <PostsDisplay/>
       <CreatePostModal show={showModal} onHide={() => setShowModal(false)} addPost={addPost} />
     </>
   );

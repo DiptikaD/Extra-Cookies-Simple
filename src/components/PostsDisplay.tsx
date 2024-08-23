@@ -1,0 +1,50 @@
+import React from 'react';
+import { Grid, Card, CardContent, CardMedia, Typography, Box, Container } from '@mui/material';
+import useFetchPosts from './useFetchPosts';
+import { Post } from './types';
+
+const PostsDisplay: React.FC = () => {
+  const { posts, loading, error } = useFetchPosts();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  return (
+    <Container>
+      <Typography variant="h4" component="h1" align='center' gutterBottom>
+        Food Posts
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+        {/* could put something here */}
+      </Box>
+      <Grid container spacing={4}>
+        {posts.map((post: Post) => (
+          <Grid item xs={12} sm={6} md={4}>
+            <Card>
+              <CardMedia
+                component="img"
+                alt={post.name}
+                height="140"
+                image={post.image}
+                title={post.name}
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  {post.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  Location: {post.location} <br />
+                  Price: ${post.price} <br />
+                  Availability: {new Date(post.availability).toLocaleString()} <br />
+                  Category: {post.category}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  );
+};
+
+export default PostsDisplay;
