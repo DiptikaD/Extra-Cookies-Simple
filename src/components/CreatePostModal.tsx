@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
+import { Modal, Button, Form } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { Post } from './types'; 
 
 interface CreatePostModalProps {
   show: boolean;
   onHide: () => void;
-  addPost: (newPost: Post) => void;
-}
-
-interface Post {
-  name: string;
-  location: string;
-  price: number;
-  image: string;
+  addPost: (newPost: Post) => void; 
 }
 
 const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide, addPost }) => {
@@ -19,60 +15,102 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide, addPost
   const [location, setLocation] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
+  const [availabilityDateTime, setAvailabilityDateTime] = useState<Date | null>(null);
+  const [category, setCategory] = useState('Produce'); 
 
   const handleSubmit = () => {
-    const newPost: Post = { name, location, price: Number(price), image };
+    const newPost: Post = {
+      name,
+      location,
+      price: Number(price),
+      image,
+      availability: availabilityDateTime ?? new Date(), 
+      category,
+    };
     addPost(newPost);
     onHide();
   };
 
   return (
-    <Dialog open={show} onClose={onHide}>
-      <DialogTitle>Create Post</DialogTitle>
-      <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          label="Food Name"
-          type="text"
-          fullWidth
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <TextField
-          margin="dense"
-          label="Location"
-          type="text"
-          fullWidth
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <TextField
-          margin="dense"
-          label="Price"
-          type="number"
-          fullWidth
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <TextField
-          margin="dense"
-          label="Image URL"
-          type="text"
-          fullWidth
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onHide} color="secondary">
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
+        <Modal.Title>Create Post</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <Form.Group>
+            <Form.Label>Item Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter food name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Location</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Enter price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Image URL</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter image URL"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Availability Date & Time</Form.Label>
+            <DatePicker
+              selected={availabilityDateTime}
+              onChange={(date: Date | null) => setAvailabilityDateTime(date)}
+              showTimeSelect
+              dateFormat="Pp"
+              className="form-control"
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Food Category</Form.Label>
+            <Form.Select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="Produce">Produce</option>
+              <option value="Ready made">Ready made</option>
+              <option value="Other">Other</option>
+            </Form.Select>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onHide}>
           Close
         </Button>
-        <Button onClick={handleSubmit} color="primary">
+        <Button variant="primary" onClick={handleSubmit}>
           Create Post
         </Button>
-      </DialogActions>
-    </Dialog>
+      </Modal.Footer>
+    </Modal>
   );
 };
 

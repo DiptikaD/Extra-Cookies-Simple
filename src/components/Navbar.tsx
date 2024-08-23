@@ -1,29 +1,67 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from '@mui/material';
+import SearchAppBar from './SearchBar';
+
 
 const AppNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [currentUser, setCurrentUser] = useState<string | null>(null); // State to hold the current user's name
 
-  const handleLogin = () => {
-    // Pseudo-code for login functionality
-    console.log(`Username: ${username}, Password: ${password}`);
-    setOpen(false);
+
+  const handleLogin = async () => {
+    try{
+      const response = await fetch('http://localhost:8080/api/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if(!response.ok){
+        throw new Error('Network response was not ok :(');
+      }
+
+      const data = await response.json();
+      console.log('Login successful:', data);
+      setCurrentUser(username);
+      console.log('Current User:', currentUser);
+
+      // if login successful, you store the token and redirect the user
+
+      setOpen(false);
+      ////////
+    } catch (error){
+      console.error('There was a problem with the fetch operation :(', error);
+      //handles error and displays to user
+    }
   };
 
   return (
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h2" sx={{ flexGrow: 1 }}>
+          <Typography variant="h3" sx={{ flexGrow: 1 }}>
             Extra Cookies
           </Typography>
-          <Button color="inherit" onClick={() => setOpen(true)}>
-            User
-          </Button>
+          <SearchAppBar/>
+          {currentUser ? (
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+              Welcome, {currentUser}!
+            </Typography>
+          ) : (
+            <Button color="inherit" onClick={() => setOpen(true)}>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
+      
 
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>User Login</DialogTitle>
