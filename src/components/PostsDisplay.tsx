@@ -14,9 +14,6 @@ const PostsDisplay: React.FC = () => {
       <Typography variant="h4" component="h1" align='center' gutterBottom>
         Food Posts
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-        {/* could put something here */}
-      </Box>
       <Grid container spacing={4}>
         {posts.map((post: Post) => (
           <Grid item xs={12} sm={6} md={4}>

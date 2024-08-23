@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from '@mui/material';
 import SearchAppBar from './SearchBar';
+import logo from './extra-cookies.png';
 
 
 const AppNavbar: React.FC = () => {
@@ -28,7 +29,6 @@ const AppNavbar: React.FC = () => {
       }
 
       const data = await response.json();
-      localStorage.setItem('authToken', data.token); //jwt token stored!!
       console.log('Login successful:', data);
       setCurrentUser(username);
       console.log('Current User:', currentUser);
@@ -47,6 +47,7 @@ const AppNavbar: React.FC = () => {
     <>
       <AppBar position="static">
         <Toolbar>
+        <img src={logo} width={57} height={60}/>
           <Typography variant="h3" sx={{ flexGrow: 1 }}>
             Extra Cookies
           </Typography>

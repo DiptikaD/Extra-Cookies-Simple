@@ -10,10 +10,8 @@ const useFetchPosts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const token = localStorage.getItem('authToken');
         const response = await axios.get<Post[]>('http://localhost:8080/api/posts', {
           headers: {
-            'Authorization': `Bearer ${token}`, //use token stored from login to get posts
             'Content-Type': 'application/json',
           },
         });

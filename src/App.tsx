@@ -34,7 +34,6 @@ const App: React.FC = () => {
 
       <Container maxWidth="lg">
         <HomePage />
-        <PostsDisplay/>
       </Container>
     </ThemeProvider>
   );
