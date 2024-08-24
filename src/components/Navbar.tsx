@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from '@mui/material';
 import SearchAppBar from './SearchBar';
 import logo from './extra-cookies.png';
+import Explosion from './explosion';
 
 
 const AppNavbar: React.FC = () => {
@@ -49,6 +50,7 @@ const AppNavbar: React.FC = () => {
           <Typography variant="h3" sx={{ flexGrow: 1 }}>
             Extra Cookies
           </Typography>
+          <Explosion/>
           <SearchAppBar/>
           {currentUser ? (
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
