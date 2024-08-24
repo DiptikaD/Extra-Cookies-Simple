@@ -25,7 +25,7 @@ const AppNavbar: React.FC = () => {
       });
 
       if(!response.ok){
-        throw new Error('Network response was not ok :(');
+        throw new Error('Network response for logging in was not ok :(');
       }
 
       const data = await response.json();
@@ -33,12 +33,10 @@ const AppNavbar: React.FC = () => {
       setCurrentUser(username);
       console.log('Current User:', currentUser);
 
-      // if login successful, you store the token and redirect the user
-
       setOpen(false);
       ////////
     } catch (error){
-      console.error('There was a problem with the fetch operation :(', error);
+      console.error('There was a problem with the fetch operation for logging in :(', error);
       //handles error and displays to user
     }
   };

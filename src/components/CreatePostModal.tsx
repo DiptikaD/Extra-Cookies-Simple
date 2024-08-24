@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Post } from './types'; 
 
 interface CreatePostModalProps {
   show: boolean;
   onHide: () => void;
-  addPost: (newPost: Post) => void; 
 }
 
-const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide, addPost }) => {
+const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide }) => {
   const [price, setPrice] = useState('');
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
@@ -18,17 +16,36 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide, addPost
   const [category, setCategory] = useState('Produce'); 
   const [image, setImage] = useState('');
 
-  const handleSubmit = () => {
-    const newPost: Post = {
-      price: Number(price),
-      title,
-      location,
-      availability: availabilityDateTime ?? new Date(), 
-      category,
-      image,
-    };
-    addPost(newPost);
-    onHide();
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          price: Number(price),
+          title,
+          location,
+          availability: availabilityDateTime ?? new Date(), 
+          category,
+          image,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response for posting item was not ok :(');
+      }
+
+      const data = await response.json();
+      console.log('Post was successful:', data);
+      window.location.reload(); // Consider using a state update or context instead of reloading
+    } catch (error) {
+      console.error('There was a problem with the fetch operation for posting items :(', error);
+      // You can add error handling here, such as displaying an alert or notification
+    } finally {
+      onHide(); // Close the modal after submission
+    }
   };
 
   return (
@@ -38,7 +55,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide, addPost
       </Modal.Header>
       <Modal.Body>
         <Form>
-        <Form.Group>
+          <Form.Group>
             <Form.Label>Price</Form.Label>
             <Form.Control
               type="number"
