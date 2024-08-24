@@ -15,7 +15,7 @@ function Explosion() {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <IconButton disabled color="primary" onClick={triggerExplosion}>
+      <IconButton color="pink" onClick={triggerExplosion}>
         <CakeSharpIcon/>
       </IconButton>
       {explosion && (
