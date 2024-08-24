@@ -12,7 +12,7 @@ const PostsDisplay: React.FC = () => {
   return (
     <Container>
       <Typography variant="h4" component="h1" align='center' gutterBottom>
-        Food Posts
+        Posts in the Neighbourhood
       </Typography>
       <Grid container spacing={4}>
         {posts.map((post: Post) => (

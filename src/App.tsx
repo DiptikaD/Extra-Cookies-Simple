@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider, createTheme, CssBaseline, Container } from '@mui/material';
 import AppNavbar from './components/Navbar';
 import HomePage from './components/HomePage';
+import GoogleMap from './components/googleMap';
 
 
 const theme = createTheme({
@@ -34,6 +35,7 @@ const App: React.FC = () => {
   
 
       <Container maxWidth="lg">
+        
         <HomePage />
       </Container>
       
