@@ -20,20 +20,20 @@ const PostsDisplay: React.FC = () => {
             <Card>
               <CardMedia
                 component="img"
-                alt={post.name}
+                alt={post.title}
                 height="140"
                 image={post.image}
-                title={post.name}
+                title={post.title}
               />
               <CardContent>
                 <Typography variant="h5" component="div">
-                  {post.name}
+                  {post.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   Location: {post.location} <br />
                   Price: ${post.price} <br />
                   Availability: {new Date(post.availability).toLocaleString()} <br />
-                  Category: {post.category}
+                {post.category}
                 </Typography>
               </CardContent>
             </Card>

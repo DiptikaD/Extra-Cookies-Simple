@@ -1,6 +1,6 @@
 // types.ts
 export interface Post {
-    name: string;
+    title: string;
     location: string;
     price: number;
     image: string;
