@@ -1,5 +1,5 @@
 import { IconButton } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 import CakeSharpIcon from '@mui/icons-material/CakeSharp';
 

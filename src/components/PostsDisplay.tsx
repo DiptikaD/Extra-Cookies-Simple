@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, Box, Container } from '@mui/material';
+import { Grid, Card, CardContent, CardMedia, Typography, Container } from '@mui/material';
 import useFetchPosts from './useFetchPosts';
 import { Post } from './types';
 
@@ -33,7 +33,7 @@ const PostsDisplay: React.FC = () => {
                   Location: {post.location} <br />
                   Price: ${post.price} <br />
                   Availability: {new Date(post.availability).toLocaleString()} <br />
-                {post.category}
+                  Category: {post.category} <br/>
                 </Typography>
               </CardContent>
             </Card>

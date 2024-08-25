@@ -1,33 +1,16 @@
 import React, { useState } from 'react';
-import { Grid, Button, Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 import CreatePostModal from './CreatePostModal';
 import PostsDisplay from './PostsDisplay';
 import { Post } from './types';
 import GoogleMap from './googleMap';
-import { CenterFocusStrong } from '@mui/icons-material';
 
 const HomePage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const addPost = (newPost: Post) => {
-    console.log('New post submitted: ', newPost);
-  };
-
-  // Example POI data, adjust according to your needs
-  const locations = [
-    { key: 'operaHouse', location: { lat: -33.8567844, lng: 151.213108 } },
-    { key: 'tarongaZoo', location: { lat: -33.8472767, lng: 151.2188164 } },
-    { key: 'manlyBeach', location: { lat: -33.8209738, lng: 151.2563253 } },
-    // Add more POIs as needed
-  ];
-
   return (
     <>
-      
-      
-      {/* Integrate GoogleMap component */}
-      
       <Grid container spacing={4} justifyContent={'center'} style={{ marginTop: '16px' }}>
       <GoogleMap/>
 
