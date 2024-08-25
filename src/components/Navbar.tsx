@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from '@mui/material';
 import SearchAppBar from './SearchBar';
+import logo from './extra-cookies.png';
+import Explosion from './explosion';
 
 
 const AppNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [currentUser, setCurrentUser] = useState<string | null>(null); // State to hold the current user's name
+  const [currentUser, setCurrentUser] = useState<string | null>(null); // holding current user's name
 
 
   const handleLogin = async () => {
@@ -24,7 +26,7 @@ const AppNavbar: React.FC = () => {
       });
 
       if(!response.ok){
-        throw new Error('Network response was not ok :(');
+        throw new Error('Network response for logging in was not ok :(');
       }
 
       const data = await response.json();
@@ -32,12 +34,10 @@ const AppNavbar: React.FC = () => {
       setCurrentUser(username);
       console.log('Current User:', currentUser);
 
-      // if login successful, you store the token and redirect the user
-
       setOpen(false);
       ////////
     } catch (error){
-      console.error('There was a problem with the fetch operation :(', error);
+      console.error('There was a problem with the fetch operation for logging in :(', error);
       //handles error and displays to user
     }
   };
@@ -46,9 +46,11 @@ const AppNavbar: React.FC = () => {
     <>
       <AppBar position="static">
         <Toolbar>
+        <img src={logo} width={57} height={60}/>
           <Typography variant="h3" sx={{ flexGrow: 1 }}>
             Extra Cookies
           </Typography>
+          <Explosion/>
           <SearchAppBar/>
           {currentUser ? (
             <Typography variant="h6" sx={{ flexGrow: 1 }}>

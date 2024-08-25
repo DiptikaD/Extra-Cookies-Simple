@@ -3,6 +3,7 @@ import { ThemeProvider, createTheme, CssBaseline, Container } from '@mui/materia
 import AppNavbar from './components/Navbar';
 import HomePage from './components/HomePage';
 
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -24,16 +25,19 @@ const theme = createTheme({
 });
 
 const App: React.FC = () => {
+  
   return (
     <ThemeProvider theme={theme}>
-
+      
       <CssBaseline />
       <AppNavbar />
   
 
       <Container maxWidth="lg">
+        
         <HomePage />
       </Container>
+      
     </ThemeProvider>
   );
 };
