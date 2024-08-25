@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Button, Dialog, DialogTitle, DialogContent
 import SearchAppBar from './SearchBar';
 import logo from './extra-cookies.png';
 import Explosion from './explosion';
+import { ForkRight } from '@mui/icons-material';
 
 
 const AppNavbar: React.FC = () => {
@@ -53,8 +54,8 @@ const AppNavbar: React.FC = () => {
           <Explosion/>
           <SearchAppBar/>
           {currentUser ? (
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              Welcome, {currentUser}!
+            <Typography variant="h6" paddingLeft={'15px'}>
+            Welcome, {currentUser}!
             </Typography>
           ) : (
             <Button color="inherit" onClick={() => setOpen(true)}>
