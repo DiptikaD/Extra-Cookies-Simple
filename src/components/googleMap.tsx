@@ -26,7 +26,7 @@ const PoiMarkers = (props: { pois: Poi[] }) => {
 type Poi = { key: string, location: google.maps.LatLngLiteral };
 
 const locations: Poi[] = [
-  { key: 'Eggs', location: { lat: 39.793676640886524, lng: -75.47040780686093 } },
+  { key: 'Eggs', location: { lat: 39.74239193803568,  lng: -75.57035425783651 } },
   { key: 'chocolate cupcakes', location: { lat: 39.798686196166244, lng: -75.48263939523204 } },
   { key: 'extra wedding favours', location: { lat: 39.81779298035111, lng:  -75.47287111840367 } },
   { key: 'backyard gourds', location: { lat: 39.88563509030423, lng: -75.54879780369569 } },

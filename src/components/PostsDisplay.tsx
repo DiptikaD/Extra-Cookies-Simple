@@ -33,7 +33,7 @@ const PostsDisplay: React.FC = () => {
                   Location: {post.location} <br />
                   Price: ${post.price} <br />
                   Availability: {new Date(post.availability).toLocaleString()} <br />
-                  Category: {post.category} <br/>
+                  Category: {post.tag} <br/>
                 </Typography>
               </CardContent>
             </Card>
