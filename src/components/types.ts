@@ -1,9 +1,9 @@
 import { EnumType } from "typescript";
 
 enum Category{
-  Produce = 'PRODUCE',
-  ReadyMade = 'READY_MADE',
-  Other = 'PRODUCE',
+  Produce = 'Produce',
+  ReadyMade = 'Ready-made',
+  Other = 'Other',
 }
 
 // types.ts
@@ -13,6 +13,6 @@ export interface Post {
     price: number;
     image: string;
     availability: Date;
-    category: Category;
+    tag: Category;
   }
   
