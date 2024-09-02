@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# ExtraCookies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**ExtraCookies** is a fullstack application designed to help users buy and sell homemade food and produce within their neighborhoods. It provides a platform for users to advertise their bake sales, lemonade stands, and other homemade goods, allowing others in the community to find these local offerings easily.
 
-## Available Scripts
+## Problem Statement
 
-In the project directory, you can run:
+In a neighborhood, it can be challenging to discover local events like bake sales, lemonade stands, or individuals giving away excess produce from their gardens. Scanning through platforms like Craigslist or Facebook Marketplace for such specific needs can be inefficient and time-consuming.
 
-### `npm start`
+**ExtraCookies** solves this problem by providing a dedicated platform where users can:
+- Advertise homemade food and produce.
+- Find local sales and stands based on their location.
+- View details about each listing, including pictures and descriptions.
+- Rely on seller ratings to make informed decisions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Location-Based Listings**: Users can view listings based on their location and see how far away each sale or stand is from them.
+- **Seller Ratings**: Each seller has a profile with ratings to help users trust and evaluate them.
+- **Detailed Listings**: Sellers can post pictures and detailed descriptions of their items.
+- **Mobile-Friendly Design**: The application layout adjusts for mobile devices to ensure a smooth user experience on all screens.
+- **No In-App Payments**: Payments are handled outside of the application; it only displays the seller's location.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**:
+  - **React**: For building the user interface.
+  - **TypeScript** and **JavaScript**: For adding type safety and scripting.
+  - **HTML** and **CSS**: For structuring and styling the application.
+  - **Google Maps API**: For displaying location-based information.
 
-### `npm run build`
+- **Backend**:
+  - **Java**: Primary programming language for backend development.
+  - **Spring Boot**: Framework for building the backend application.
+  - **JPA (Java Persistence API)**: For interacting with the database.
+  - **H2 Database**: In-memory database used for development and testing.
+  - **SQL**: For querying and managing the database.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  **Link to backend**:
+  https://github.com/DiptikaD/ExtraCookies
