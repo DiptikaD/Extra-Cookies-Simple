@@ -5,6 +5,7 @@ import {
   MapCameraChangedEvent,
   Pin
 } from '@vis.gl/react-google-maps';
+import { API_KEY } from '../data';
 
 // PoiMarkers component
 const PoiMarkers = (props: { pois: Poi[] }) => {
@@ -42,7 +43,7 @@ const locations: Poi[] = [
 
 // GoogleMap component
 const GoogleMap = (props: { pois: Poi[] }) => (
-  <APIProvider apiKey={'AIzaSyA65foMmHiR8oAOUOlvMynfbnsBa-4vtiM'} onLoad={() => console.log('Maps API has loaded.')}>
+  <APIProvider apiKey={API_KEY} onLoad={() => console.log('Maps API has loaded.')}>
     <Map
       defaultZoom={14}
       defaultCenter={{ lat:39.74520, lng:  -75.54562 }}
