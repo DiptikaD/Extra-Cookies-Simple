@@ -39,12 +39,11 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ show, onHide }) => {
 
       const data = await response.json();
       console.log('Post was successful:', data);
-      window.location.reload(); // Consider using a state update or context instead of reloading
+      window.location.reload(); 
     } catch (error) {
       console.error('There was a problem with the fetch operation for posting items :(', error);
-      // You can add error handling here, such as displaying an alert or notification
     } finally {
-      onHide(); // Close the modal after submission
+      onHide(); // Close the form after submission
     }
   };
 
